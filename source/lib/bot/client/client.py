@@ -31,8 +31,6 @@ async def start_command(message: Message):
             language_code=from_user.language_code,
             is_premium=from_user.is_premium
         )
-        if message.from_user.username in ("maks_ard", "Kretin3"):
-            user.is_admin = True
         await postgres.insert_object(user)
     except IntegrityError:
         logger.info(f'User exist {from_user.id} - {from_user.first_name}')

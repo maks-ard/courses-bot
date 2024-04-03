@@ -31,8 +31,8 @@ class Service:
         self.dp.message.outer_middleware.register(
             LogMessageMiddleware(self.logger, -1002050723063)
         )
-        self.dp.include_router(admin_router)
         self.dp.include_router(client_router)
+        self.dp.include_router(admin_router)
 
         self.logger.info('Start polling')
         await self.dp.start_polling(self.bot, logger=self.logger)
